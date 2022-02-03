@@ -15,5 +15,5 @@ mongoose
   .catch(console.log)
 
 const Panda = mongoose.model('Panda', { name: String, age: Number })
-const panda = new Panda({ name: 'Quaresma', age: 18 })
+const panda = new Panda({ name: 'Quaresma', age: 7 })
 panda.save().then(() => console.log(`we have a new panda, ${panda.name}!`))
