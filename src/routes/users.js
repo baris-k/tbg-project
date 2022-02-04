@@ -1,7 +1,56 @@
 const express = require('express')
 
 const router = express.Router()
+
 const User = require('../models/user')
+const Match = require('../models/match')
+
+/* GET users listing. */
+router.get('/', async (req, res) => {
+  const query = {}
+  if (req.query.name) {
+    query.name = req.query.name
+  }
+
+  if (req.query.age) {
+    query.age = req.query.age
+  }
+
+  res.send(await User.find(query))
+})
+
+router.get('/initialize', async (req, res) => {
+  const baris = await User.create({ name: 'Baris', age: 24 })
+  const quaresma = await User.create({ name: 'Quaresma', age: 38 })
+  const sema = await User.create({ name: 'Sema', age: 25 })
+
+  const atiba = await User.create({ name: 'Atiba', age: 38 })
+  atiba.bio = 'Im an Eagle till the end 🦅'
+
+  const aachenMatch = await Match.create({ filename: 'Aachen' })
+  const berlinMatch = await Match.create({ filename: 'Berlin' })
+
+  await atiba.addMatch(aachenMatch)
+  await quaresma.addMatch(aachenMatch)
+  await baris.addMatch(berlinMatch)
+
+  await quaresma.likeMatch(berlinMatch)
+  await sema.likeMatch(aachenMatch)
+
+  console.log(sema)
+  res.sendStatus(200)
+})
+
+router.get('/:userId', async (req, res) => {
+  const user = await User.findById(req.params.userId)
+
+  if (user) res.render('user', { user })
+  else res.sendStatus(404)
+})
+
+module.exports = router
+
+/* const User = require('../models/user')
 const Match = require('../models/match')
 
 const baris = new User('Baris', 24)
@@ -15,23 +64,4 @@ baris.bio = 'Amateur on paper, pro in the game'
 
 quaresma.likeMatch(firstMatch)
 
-const users = [baris, quaresma]
-
-/* GET users listing. */
-router.get('/', (req, res) => {
-  let result = users
-
-  if (req.query.name) {
-    result = users.filter(user => user.name == req.query.name)
-  }
-
-  res.send(result)
-})
-router.get('/:userId', (req, res) => {
-  const user = users[req.params.userId]
-
-  if (user) res.render('user', { user })
-  else res.sendStatus(404)
-})
-
-module.exports = router
+const users = [baris, quaresma] */
