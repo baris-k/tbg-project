@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/baris-k/tbg-project#readme",
   "devDependencies": {
+    "connect-livereload": "^0.6.1",
     "eslint": "^8.6.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-prettier": "^8.3.0",
@@ -40,6 +41,7 @@
     "debug": "~2.6.9",
     "express": "~4.16.1",
     "http-errors": "~1.6.3",
+    "livereload": "^0.9.3",
     "mongoose": "^6.1.7",
     "mongoose-autopopulate": "^0.16.0",
     "morgan": "~1.9.1",
