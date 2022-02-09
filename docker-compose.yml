@@ -1,9 +1,9 @@
-version: '3'
+version: "3"
 services:
   app:
-    image: tbg-project
+    image: backend
     build:
-      context: .
+      context: backend
       dockerfile: Dockerfile
     environment:
       # - MONGODB_USERNAME
@@ -14,7 +14,7 @@ services:
       - 3000:3000
       - 35729:35729
     volumes:
-      - ./src:/app/src
+      - ./backend/src:/app/src
   mongo:
     image: mongo
     ports:
