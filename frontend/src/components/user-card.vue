@@ -6,7 +6,7 @@ export default {
     return {
       defaultBio: 'This user has no bios.',
     }
-  },
+  }
 }
 </script>
 
@@ -27,7 +27,7 @@ export default {
 .box {
   padding: 2rem;
   border: 1px solid #333;
-  background: #dd0;
+  background: rgb(235, 161, 2);
   border-radius: 0.3rem;
 }
 </style>

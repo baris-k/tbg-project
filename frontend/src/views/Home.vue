@@ -1,10 +1,12 @@
 <script>
-// @ is an alias to /src
 import axios from 'axios'
+import UserCard from '@/components/user-card.vue'
 
 export default {
   name: 'Home',
-  components: {},
+  components: {
+    UserCard,
+  },
   data() {
     return {
       users: [],
@@ -22,4 +24,7 @@ export default {
   .home
     h1 TBG - The Beautiful Game
     img(alt="Vue mylogo" src="../assets/mylogo.png")
+    h2 Users
+    UserCard(v-for="user in users" :user="user")
+      router-link(:to="`/users/${user._id}`") {{ user.name }}
 </template>
