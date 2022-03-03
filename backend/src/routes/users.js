@@ -35,13 +35,21 @@ async function createMatch(filename) {
   return match.save()
 }
 router.get('/initialize', async (req, res) => {
-  const baris = await User.create({ name: 'Baris', age: 24 })
-  
-  const quaresma = await User.create({ name: 'Quaresma', age: 38 })
-  const sema = await User.create({ name: 'Sema', age: 25 })
-  
-  const atiba = await User.create({ name: 'Atiba', age: 38 })
-  atiba.bio = 'Im an Eagle till the end 🦅'
+  const quaresma = new User({ name: 'Quaresma', age: 32, email: 'sinem@sinem.com' })
+  await quaresma.setPassword('test')
+  await quaresma.save()
+
+  const baris = new User({ name: 'baris', age: 32, email: 'rosa@rosa.com' })
+  await baris.setPassword('test')
+  await baris.save()
+
+  const atiba = new User({ name: 'atiba', age: 32, email: 'carlos@carlos.com' })
+  await atiba.setPassword('test')
+  await atiba.save()
+
+  const sema = new User({ name: 'sema', age: 32, email: 'carlos@carlos.com' })
+  await sema.setPassword('test')
+  await sema.save()
 
   const aachenMatch = await createMatch('Aachen')
   const berlinMatch = await createMatch('Berlin')

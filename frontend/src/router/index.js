@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/home.vue'
+import Home from '../views/Home.vue'
 import Matches from '../views/matches.vue'
 import Register from '../views/register.vue'
 import Login from '../views/login.vue'
@@ -12,11 +12,7 @@ export default function init(store) {
     mode: 'history',
     base: process.env.BASE_URL,
     routes: [
-      {
-        path: '/',
-        name: 'UserList',
-        component: UserList,
-      },
+      
       {
         path: '/users/:id',
         name: 'UserDetail',
