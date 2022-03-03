@@ -36,11 +36,10 @@ async function createMatch(filename) {
 }
 router.get('/initialize', async (req, res) => {
   const baris = await User.create({ name: 'Baris', age: 24 })
-
+  
   const quaresma = await User.create({ name: 'Quaresma', age: 38 })
   const sema = await User.create({ name: 'Sema', age: 25 })
-  sema.bio = 'I am just here because of Baris'
-  baris.bio = ' I am the CEO of this Page. '
+  
   const atiba = await User.create({ name: 'Atiba', age: 38 })
   atiba.bio = 'Im an Eagle till the end 🦅'
 
