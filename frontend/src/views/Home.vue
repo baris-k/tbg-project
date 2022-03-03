@@ -1,19 +1,10 @@
-<template lang="pug">
-  .home
-    img(alt="Vue logo" src="../assets/logo.png")
-    HelloWorld(msg="Welcome to Your Vue.js App") 
-</template>
-
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/helloworld.vue'
 import axios from 'axios'
 
 export default {
   name: 'Home',
-  components: {
-    HelloWorld
-  },
+  components: {},
   data() {
     return {
       users: [],
@@ -26,3 +17,9 @@ export default {
   },
 }
 </script>
+
+<template lang="pug">
+  .home
+    h1 TBG - The Beautiful Game
+    img(alt="Vue mylogo" src="../assets/mylogo.png")
+</template>

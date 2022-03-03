@@ -19,6 +19,21 @@ router.get('/', async (req, res) => {
   res.send(await User.find(query))
 })
 
+/* POST create a user */
+router.post('/', async (req, res) => {
+  const userToCreate = {
+    name: req.body.name,
+    age: req.body.age,
+  }
+
+  const createdUser = await User.create(userToCreate)
+  res.send(createdUser)
+})
+
+async function createMatch(filename) {
+  const match = await Match.create({ filename })
+  return match.save()
+}
 router.get('/initialize', async (req, res) => {
   const baris = await User.create({ name: 'Baris', age: 24 })
   const quaresma = await User.create({ name: 'Quaresma', age: 38 })
@@ -27,11 +42,11 @@ router.get('/initialize', async (req, res) => {
   const atiba = await User.create({ name: 'Atiba', age: 38 })
   atiba.bio = 'Im an Eagle till the end 🦅'
 
-  const aachenMatch = await Match.create({ filename: 'Aachen' })
-  const berlinMatch = await Match.create({ filename: 'Berlin' })
+  const aachenMatch = await createMatch('Aachen')
+  const berlinMatch = await createMatch('Berlin')
 
   await atiba.addMatch(aachenMatch)
-  await quaresma.addMatch(aachenMatch)
+  // await quaresma.addMatch(aachenMatch)
   await baris.addMatch(berlinMatch)
 
   await quaresma.likeMatch(berlinMatch)

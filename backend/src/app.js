@@ -8,10 +8,12 @@ require('./database-connection')
 
 const indexRouter = require('./routes/index')
 const usersRouter = require('./routes/users')
+const matchesRouter = require('./routes/matches')
+const accountRouter = require('./routes/account')
 
 const app = express()
 
- if (app.get('env') == 'development') {
+if (app.get('env') == 'development') {
   /* eslint-disable-next-line */
   app.use(require('connect-livereload')())
   /* eslint-disable-next-line */
@@ -19,7 +21,6 @@ const app = express()
     .createServer({ extraExts: ['pug'] })
     .watch([`${__dirname}/public`, `${__dirname}/views`])
 }
-
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'))
@@ -31,8 +32,10 @@ app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
 
-app.use('/', indexRouter)
-app.use('/users', usersRouter)
+app.use('/api', indexRouter)
+app.use('/api/users', usersRouter)
+app.use('/api/matches', matchesRouter)
+app.use('/api/account', accountRouter)
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
