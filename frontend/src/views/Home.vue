@@ -23,7 +23,8 @@ export default {
 <template lang="pug">
   .home
     h1 TBG - The Beautiful Game
-    img(alt="Vue mylogo" src="../assets/mylogo.png")
+      d
+      img(alt="Vue mylogo" src="../assets/mylogo.png")
     h2 Users
     UserCard(v-for="user in users" :user="user")
       router-link(:to="`/users/${user._id}`") {{ user.name }}

@@ -20,8 +20,8 @@ export default {
       router-link(to="/") Home |&nbsp;
       router-link(to="/matches") Matches |&nbsp;
       router-link(to="/about") About |&nbsp;
-      router-link(to="/register") Register|&nbsp;
-      router-link(to="/login") Login
+      router-link(to="/register") Register |&nbsp;
+      router-link(to="/login") Login |&nbsp;
       a(@click="doLogout" href="#") Logout
     router-view
 </template>
